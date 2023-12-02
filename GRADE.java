@@ -19,6 +19,7 @@ public class GRADE {
         ArrayList<ArrayList<Double>> posData = new ArrayList<>();
         ArrayList<String> nameCodeData = new ArrayList<>();
         ArrayList<Integer> numberOfMoleculesData = new ArrayList<>();
+        NeighbourList[] neighbourList;
         double boxX = 0;
         double boxY = 0;
         double boxZ = 0;
@@ -64,6 +65,8 @@ public class GRADE {
                     nextFrame = nextFrame + 1;
 
                     numberOfMoleculesData = func.calcNumberOfMoleculesData(nameCodeData);
+                    neighbourList = func.neighbourListGenerator(posData, boxX, boxY, boxZ);
+                    
                 }
             }
             reader.close();
@@ -71,9 +74,6 @@ public class GRADE {
         catch(FileNotFoundException e) {
             System.out.println("Error occurred (File not found)");
         }
-
-        System.out.println(numberOfMoleculesData);
-
     }
 
 }
